@@ -1,6 +1,9 @@
 name: Extract i18n messages
 on: push
 
+permissions:
+  pull-requests: write
+
 jobs:
   extract-i18n:
     runs-on: ubuntu-latest
