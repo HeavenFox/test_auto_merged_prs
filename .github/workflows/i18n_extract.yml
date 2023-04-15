@@ -1,0 +1,21 @@
+name: Extract i18n messages
+on: push
+
+jobs:
+  extract-i18n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Add timestamp
+        run: date >> timestamps
+      - uses: peter-evans/create-pull-request@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          committer: DocSend Bot <docsend@dropbox.com>
+          author: DocSend Bot <docsend@dropbox.com>
+          commit-message: '#automatic_commit extract strings'
+          title: 'Extract strings for internationalization'
+          body: '(Automated Pull Request)'
+          labels: automated-pr
+          assignees: '$GITHUB_ACTOR'
+          add-paths: 'config/locales/'
