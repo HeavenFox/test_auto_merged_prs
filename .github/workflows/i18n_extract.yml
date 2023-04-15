@@ -18,4 +18,4 @@ jobs:
           body: '(Automated Pull Request)'
           labels: automated-pr
           assignees: '$GITHUB_ACTOR'
-          add-paths: 'config/locales/'
+          add-paths: 'timestamps'
