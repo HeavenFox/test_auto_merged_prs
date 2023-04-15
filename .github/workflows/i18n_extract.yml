@@ -11,6 +11,7 @@ jobs:
       - name: Add timestamp
         run: date >> timestamps
       - uses: peter-evans/create-pull-request@v4
+        id: cpr
         if: github.ref == 'refs/heads/main'
         with:
           committer: DocSend Bot <docsend@dropbox.com>
@@ -21,3 +22,6 @@ jobs:
           labels: automated-pr
           assignees: '$GITHUB_ACTOR'
           add-paths: 'timestamps'
+      - uses: hmarr/auto-approve-action@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
