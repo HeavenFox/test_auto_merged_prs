@@ -1,8 +1,7 @@
 name: Extract i18n messages
 on: push
 
-permissions:
-  pull-requests: write
+permissions: write-all
 
 jobs:
   extract-i18n:
