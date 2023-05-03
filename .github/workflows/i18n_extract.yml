@@ -26,3 +26,7 @@ jobs:
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           github-token: ${{ secrets.MACHINE_USER_TOKEN }}
+      - name: Enable Pull Request Automerge
+        env:
+          PULL_REQUEST_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: gh pr merge --rebase --auto $PULL_REQUEST_NUMBER
